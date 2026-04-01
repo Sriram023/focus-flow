@@ -17,17 +17,16 @@ export const AuthProvider = ({ children }) => {
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    // Check if user is logged in on mount
-    const token = localStorage.getItem('token');
-    const savedUser = localStorage.getItem('user');
+  const token = localStorage.getItem('token');
+  const savedUser = localStorage.getItem('user');
 
-    if (token && savedUser) {
-      setUser(JSON.parse(savedUser));
-      loadUserProfile();
-    } else {
-      setLoading(false);
-    }
-  }, []);
+  if (token && savedUser) {
+    setUser(JSON.parse(savedUser));
+    setLoading(false); // 👈 important
+  } else {
+    setLoading(false);
+  }
+}, []);
 
   const loadUserProfile = async () => {
     try {
