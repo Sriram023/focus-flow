@@ -12,7 +12,7 @@ const Dashboard = () => {
   const [analytics, setAnalytics] = useState(null);
   const [dailyFocus, setDailyFocus] = useState([]);
   const [loading, setLoading] = useState(true);
-
+  console.log("DASHBOARD MOUNTED");
   useEffect(() => {
     loadDashboardData();
   }, []);
