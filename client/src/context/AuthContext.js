@@ -64,11 +64,11 @@ const login = async (email, password) => {
   console.log("LOGIN FUNCTION TRIGGERED"); // 👈 HERE (first line)
 
   // 🔥 TEMP HARD-CODE LOGIN
-  if (email === "sandhyamurali0326@gmail.com" && password === "Sandhyasriram023") {
+  if (email === "sandhyamurali0326@gmail.com" && password === "Sandhyasri023") {
     console.log("HARDCODE LOGIN SUCCESS"); // 👈 HERE (inside IF)
 
     const fakeUser = {
-      name: "Sriram",
+      name: "Sandhya",
       email: "Sandhyamurali0326@gmail.com",
       token: "fake-token-123",
     };
