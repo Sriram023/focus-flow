@@ -59,10 +59,10 @@ export const AuthProvider = ({ children }) => {
 
 const login = async (email, password) => {
   // 🔥 TEMP HARD-CODE LOGIN
-  if (email === "test@gmail.com" && password === "123456") {
+  if (email === "sandhyamurali0326@gmail.com" && password === "Sandhyasriram023") {
     const fakeUser = {
       name: "Sriram",
-      email: "test@gmail.com",
+      email: "Sandhyamurali0326@gmail.com",
       token: "fake-token-123",
     };
 
