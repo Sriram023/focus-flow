@@ -57,20 +57,35 @@ export const AuthProvider = ({ children }) => {
     }
   };
 
-  const login = async (email, password) => {
-    try {
-      setError(null);
-      const { data } = await api.post('/auth/login', { email, password });
-      localStorage.setItem('token', data.token);
-      localStorage.setItem('user', JSON.stringify(data));
-      setUser(data);
-      return data;
-    } catch (error) {
-      const message = error.response?.data?.message || 'Login failed';
-      setError(message);
-      throw new Error(message);
-    }
-  };
+const login = async (email, password) => {
+  // 🔥 TEMP HARD-CODE LOGIN
+  if (email === "test@gmail.com" && password === "123456") {
+    const fakeUser = {
+      name: "Sriram",
+      email: "test@gmail.com",
+      token: "fake-token-123",
+    };
+
+    localStorage.setItem("token", fakeUser.token);
+    localStorage.setItem("user", JSON.stringify(fakeUser));
+    setUser(fakeUser);
+
+    return fakeUser;
+  }
+
+  // fallback to real API
+  try {
+    const { data } = await api.post('/auth/login', { email, password });
+    localStorage.setItem('token', data.token);
+    localStorage.setItem('user', JSON.stringify(data));
+    setUser(data);
+    return data;
+  } catch (error) {
+    const message = error.response?.data?.message || 'Login failed';
+    setError(message);
+    throw new Error(message);
+  }
+};
 
   const logout = () => {
     localStorage.removeItem('token');
