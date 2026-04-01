@@ -61,8 +61,12 @@ export const AuthProvider = ({ children }) => {
   };
 
 const login = async (email, password) => {
+  console.log("LOGIN FUNCTION TRIGGERED"); // 👈 HERE (first line)
+
   // 🔥 TEMP HARD-CODE LOGIN
   if (email === "sandhyamurali0326@gmail.com" && password === "Sandhyasriram023") {
+    console.log("HARDCODE LOGIN SUCCESS"); // 👈 HERE (inside IF)
+
     const fakeUser = {
       name: "Sriram",
       email: "Sandhyamurali0326@gmail.com",
@@ -78,10 +82,14 @@ const login = async (email, password) => {
 
   // fallback to real API
   try {
+    console.log("API LOGIN CALLED"); // 👈 optional debug
+
     const { data } = await api.post('/auth/login', { email, password });
+
     localStorage.setItem('token', data.token);
     localStorage.setItem('user', JSON.stringify(data));
     setUser(data);
+
     return data;
   } catch (error) {
     const message = error.response?.data?.message || 'Login failed';
@@ -89,7 +97,6 @@ const login = async (email, password) => {
     throw new Error(message);
   }
 };
-
   const logout = () => {
     localStorage.removeItem('token');
     localStorage.removeItem('user');
