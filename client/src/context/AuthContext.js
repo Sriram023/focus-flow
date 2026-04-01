@@ -61,29 +61,7 @@ console.log("USER STATE:", user);
   };
 
 const login = async (email, password) => {
-  console.log("LOGIN FUNCTION TRIGGERED"); // 👈 HERE (first line)
-
-  // 🔥 TEMP HARD-CODE LOGIN
-  if (email === "sandhyamurali0326@gmail.com" && password === "Sandhyasri023") {
-    console.log("HARDCODE LOGIN SUCCESS"); // 👈 HERE (inside IF)
-
-    const fakeUser = {
-      name: "Sandhya",
-      email: "Sandhyamurali0326@gmail.com",
-      token: "fake-token-123",
-    };
-
-    localStorage.setItem("token", fakeUser.token);
-    localStorage.setItem("user", JSON.stringify(fakeUser));
-    setUser(fakeUser);
-
-    return fakeUser;
-  }
-
-  // fallback to real API
   try {
-    console.log("API LOGIN CALLED"); // 👈 optional debug
-
     const { data } = await api.post('/auth/login', { email, password });
 
     localStorage.setItem('token', data.token);
