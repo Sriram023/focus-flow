@@ -17,15 +17,19 @@ export const AuthProvider = ({ children }) => {
   const [error, setError] = useState(null);
 
   useEffect(() => {
+  console.log("Auth init");
+
   const token = localStorage.getItem('token');
   const savedUser = localStorage.getItem('user');
 
+  console.log("TOKEN:", token);
+  console.log("USER:", savedUser);
+
   if (token && savedUser) {
     setUser(JSON.parse(savedUser));
-    setLoading(false); // 👈 important
-  } else {
-    setLoading(false);
   }
+
+  setLoading(false);
 }, []);
 
   const loadUserProfile = async () => {
